@@ -61,7 +61,7 @@ namespace TemperatureMonitoring
 			string res = "";
 			if (countViolationsMax * 10 > maxTime)
 			{
-				res = $"Порог максимально допустимой температуры превышен на {countViolationsMax * 10 - maxTime} минут. \n";
+				res = $"Порог максимально допустимой температуры превышен на {countViolationsMax * 10} минут. \n";
 			}
 			foreach (var violation in violationsMax)
 			{
@@ -70,7 +70,7 @@ namespace TemperatureMonitoring
 
 			if (countViolationsMin * 10 > minTime)
 			{
-				res += $"Порог минимально допустимой температуры превышен на {countViolationsMin * 10 - minTime} минут. \n";
+				res += $"Порог минимально допустимой температуры превышен на {countViolationsMin * 10} минут. \n";
 			}
 			foreach (var violation in violationsMin)
 			{
