@@ -5,22 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TemperatureMonitoring"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Temperature Monitoring" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="tbFishName" HorizontalAlignment="Left" Margin="503,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" Grid.Column="1" Height="18"/>
-        <TextBox x:Name="tbMaxTemp" HorizontalAlignment="Left" Margin="503,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" Grid.Column="1" Height="18"/>
-        <TextBox x:Name="tbMinTemp" HorizontalAlignment="Left" Margin="505,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" Grid.Column="1" Height="18"/>
-        <Button x:Name="btnLoad" Content="Load temperature info" HorizontalAlignment="Left" Margin="509,384,0,0" VerticalAlignment="Top" Background="#FFC1C1C1" Width="129" Click="btnLoad_Click" Grid.Column="1" Height="20"/>
-        <Label Content="Введите тип рыбы" HorizontalAlignment="Left" Margin="503,17,0,0" VerticalAlignment="Top" Height="26" Width="122"/>
-        <Label Content="Введите максимальную температуру и срок (T t)" HorizontalAlignment="Left" Margin="503,80,0,0" VerticalAlignment="Top" Height="26" Width="287"/>
-        <Label Content="Введите минимальную температуру и срок (T t)" HorizontalAlignment="Left" Margin="505,144,0,0" VerticalAlignment="Top" Height="26" Width="285"/>
-        <TextBox x:Name="tbDate" HorizontalAlignment="Left" Margin="505,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <Label Content="Enter begin date" HorizontalAlignment="Left" Margin="509,213,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="98"/>
-        <Label Content="Enter temperature info" HorizontalAlignment="Left" Margin="505,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.434,0.148" Grid.Column="1" Height="26" Width="130"/>
-        <TextBox x:Name="tbTempInfo" HorizontalAlignment="Left" Margin="508,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="40" VerticalScrollBarVisibility="Auto"/>
-        <Button x:Name="btnMonitoring" Content="Monitoring" HorizontalAlignment="Left" Margin="664,384,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.134,0.202" Click="btnMonitoring_Click"/>
-        <Label Content="Отчет&#xD;&#xA;Формат: Время, Факт, Норма, Отклонение от нормы" HorizontalAlignment="Left" Margin="36,24,0,0" VerticalAlignment="Top" Width="302"/>
-        <TextBlock x:Name="tblkRes" HorizontalAlignment="Left" Margin="36,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Height="288"/>
+        <TextBox x:Name="tbFishName" HorizontalAlignment="Left" Margin="446,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" Height="18" Grid.Column="1"/>
+        <TextBox x:Name="tbMaxTemp" HorizontalAlignment="Left" Margin="446,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" Height="18" Grid.Column="1"/>
+        <TextBox x:Name="tbMinTemp" HorizontalAlignment="Left" Margin="446,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" Height="18" Grid.Column="1"/>
+        <Button x:Name="btnLoad" Content="Ввести замеры датчика из файла" HorizontalAlignment="Left" Margin="413,389,0,0" VerticalAlignment="Top" Background="#FFDDDDDD" Width="187" Click="btnLoad_Click" Height="20" Grid.Column="1"/>
+        <Label Content="Введите тип рыбы" HorizontalAlignment="Left" Margin="446,17,0,0" VerticalAlignment="Top" Height="26" Width="122" Grid.Column="1"/>
+        <Label Content="Введите максимальную температуру и срок (T t)" HorizontalAlignment="Left" Margin="446,80,0,0" VerticalAlignment="Top" Height="26" Width="287" Grid.Column="1"/>
+        <Label Content="Введите минимальную температуру и срок (T t)" HorizontalAlignment="Left" Margin="448,144,0,0" VerticalAlignment="Top" Height="26" Width="285" Grid.Column="1"/>
+        <TextBox x:Name="tbDate" HorizontalAlignment="Left" Margin="446,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Grid.Column="1"/>
+        <Label Content="Введите время отправки" HorizontalAlignment="Left" Margin="448,211,0,0" VerticalAlignment="Top" Height="26" Width="147" Grid.Column="1"/>
+        <Label Content="Введите замеры температуры" HorizontalAlignment="Left" Margin="446,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.434,0.148" Height="26" Width="178" Grid.Column="1"/>
+        <TextBox x:Name="tbTempInfo" HorizontalAlignment="Left" Margin="446,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="40" VerticalScrollBarVisibility="Auto" Grid.Column="1"/>
+        <Button x:Name="btnMonitoring" Content="Найти нарушения" HorizontalAlignment="Left" Margin="623,389,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.134,0.202" Click="btnMonitoring_Click" Grid.Column="1"/>
+        <Label Content="Отчет&#xD;&#xA;Формат: Время, Факт, Норма, Отклонение от нормы" HorizontalAlignment="Left" Margin="36,24,0,0" VerticalAlignment="Top" Width="302" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="tblkRes" HorizontalAlignment="Left" Margin="10,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="428" Height="288"/>
+        <Button Content="Сохранить отчет" HorizontalAlignment="Left" Margin="47,389,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

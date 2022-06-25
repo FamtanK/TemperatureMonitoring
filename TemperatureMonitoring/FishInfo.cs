@@ -59,22 +59,22 @@ namespace TemperatureMonitoring
 		public string GetViolations()
 		{
 			string res = "";
-			if (countViolationsMax > 0)
+			if (countViolationsMax * 10 > maxTime)
 			{
-				res = $"Порог максимально допустимой температуры превышен на {countViolationsMax * 10} минут. \n";
-				foreach (var violation in violationsMax)
-				{
-					res += violation.ToString() + "\n";
-				}
+				res = $"Порог максимально допустимой температуры превышен на {countViolationsMax * 10 - maxTime} минут. \n";
+			}
+			foreach (var violation in violationsMax)
+			{
+				res += violation.ToString() + "\n";
 			}
 
-			if (countViolationsMin > 0)
+			if (countViolationsMin * 10 > minTime)
 			{
-				res += $"Порог минимально допустимой температуры превышен на {countViolationsMin * 10} минут. \n";
-				foreach (var violation in violationsMin)
-				{
-					res += violation.ToString() + "\n";
-				}
+				res += $"Порог минимально допустимой температуры превышен на {countViolationsMin * 10 - minTime} минут. \n";
+			}
+			foreach (var violation in violationsMin)
+			{
+				res += violation.ToString() + "\n";
 			}
 			return res;
         }

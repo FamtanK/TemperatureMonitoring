@@ -56,6 +56,11 @@ namespace TemperatureMonitoring
                 Parse();
                 info.FindViolations();
                 tblkRes.Text = info.GetViolations();
+                if (info.countViolationsMax * 10 > info.maxTime ||
+                    info.countViolationsMin * 10 > info.minTime)
+                {
+                    MessageBox.Show("Были нарушены условия хранения рыбы!");
+                }
             }
             catch(Exception ex)
             {
@@ -65,18 +70,33 @@ namespace TemperatureMonitoring
 
         private void Parse()
         {
-            info.beginTime = DateTime.Parse(tbDate.Text, new CultureInfo("ru-RU"));
-
-            foreach (var temp in tbTempInfo.Text.Split())
+            try
             {
-                info.temps.Add(int.Parse(temp));
-            }
-            info.type = tbFishName.Text;
-            info.maxTemp = int.Parse((tbMaxTemp.Text.Split())[0]);
-            info.minTemp = int.Parse((tbMinTemp.Text.Split())[0]);
-            info.maxTime = int.Parse((tbMaxTemp.Text.Split())[1]);
-            info.minTime = int.Parse((tbMinTemp.Text.Split())[1]);
+                info.beginTime = DateTime.Parse(tbDate.Text, new CultureInfo("ru-RU"));
 
+                foreach (var temp in tbTempInfo.Text.Split())
+                {
+                    info.temps.Add(int.Parse(temp));
+                }
+                info.type = tbFishName.Text;
+                info.maxTemp = int.Parse((tbMaxTemp.Text.Split())[0]);
+                info.maxTime = int.Parse((tbMaxTemp.Text.Split())[1]);
+            
+                if (tbMinTemp.Text != "")
+                {
+                    info.minTime = int.Parse((tbMinTemp.Text.Split())[1]);
+                    info.minTemp = int.Parse((tbMinTemp.Text.Split())[0]);
+                }
+                else
+                {
+                    info.minTime = 0;
+                    info.minTemp = int.MinValue;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Введенные данные неверного формата");
+            }
         }
 
         private void Load(string path)
@@ -85,6 +105,26 @@ namespace TemperatureMonitoring
             {
                 tbDate.Text = reader.ReadLine();
                 tbTempInfo.Text = reader.ReadLine();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var saveDialog = new Microsoft.Win32.SaveFileDialog();
+            saveDialog.Filter = "Text Files|*.txt";
+            saveDialog.ShowDialog();
+
+            if (saveDialog.FileName != "")
+            {
+                Save(saveDialog.FileName);
+            }
+        }
+
+        private void Save(string path)
+        {
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine(info.GetViolations());
             }
         }
     }
